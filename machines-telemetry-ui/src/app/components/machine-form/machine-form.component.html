@@ -1,0 +1,31 @@
+<form (ngSubmit)="submit()">
+    <label>
+        Nome:
+        <input placeholder="Digite o nome da máquina" type="text" [(ngModel)]="machine.name" name="name" required>
+    </label>
+
+    <label>
+        Latitude:
+        <input  type="number" [(ngModel)]="machine.telemetry.latitude" name="latitude" required>
+    </label>
+
+    <label>
+        Longitude:
+        <input type="number" [(ngModel)]="machine.telemetry.longitude" name="longitude" required>
+    </label>
+
+    <label>
+        Status:
+        <div class="select-wrapper">
+            <select [(ngModel)]="machine.telemetry.status" name="status" required>
+                <option value="" disabled selected>Selecione um status</option>
+                <option value="Operating">Operando</option>
+                <option value="Stopped">Parada</option>
+                <option value="Maintenance">Manutenção</option>
+            </select>
+        </div>
+    </label>
+
+  <app-submit-button text="Criar Máquina" [disabled]="false"/>
+</form>
+

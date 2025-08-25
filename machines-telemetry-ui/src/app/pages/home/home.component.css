@@ -1,0 +1,21 @@
+
+#listaTitle{
+    font-size: 18pt;
+}
+
+#listaParagraph
+{
+    max-width: 500px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: var(--gray-color);
+}
+
+#homeContainer #top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    height: auto;
+    
+}

@@ -1,0 +1,56 @@
+.table-container {
+  overflow-x: auto; 
+  border-radius: 10px;
+  width: 100%;
+  margin: 30px 0;
+  box-shadow: 0 0px 8px rgb(204, 204, 204); 
+  
+}
+
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+  table-layout: auto;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden; 
+}
+
+thead {
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  font-size: 13pt;
+}
+
+th, td {
+  padding: 16px 20px;
+  text-align: center;
+  white-space: nowrap;       
+  overflow: hidden;          
+  text-overflow: ellipsis;   
+}
+
+th {
+  font-weight: 600;
+  color: #333;
+}
+
+td {
+  border-bottom: 1px solid #e0e0e0; 
+  color: var(--gray-color);
+  font-size: 11pt;
+}
+
+td #status{
+  margin: auto;
+  padding: 10px;
+  max-width: 130px;
+  border-radius: 20px;
+  border: 1px solid rgb(209, 209, 209);
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}

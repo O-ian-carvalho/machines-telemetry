@@ -1,0 +1,48 @@
+form{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    min-width: 30vw;
+    height: auto;
+    gap: 20px;
+    align-items: center;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.315);
+}
+
+form label{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+form label input{
+    padding: 12px ;
+    border-radius: 10px;
+    background-color: rgba(236, 236, 236, 0.753);
+}
+
+form label select{
+    background-color: rgba(236, 236, 236, 0.753);
+    width: 100%;
+}
+
+form label select:focus {
+  outline: none; 
+  box-shadow: none; 
+}
+
+
+.select-wrapper {
+    background-color: rgba(236, 236, 236, 0.753);
+    padding: 10px 20px;
+    border-radius: 10px;
+
+}
+
+.select-wrapper select {
+  padding-right: 40px; /* espaço para a seta */
+}

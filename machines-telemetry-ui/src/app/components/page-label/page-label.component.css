@@ -1,0 +1,11 @@
+#title{
+    font-size: 18pt;
+}
+
+#paragraph
+{
+    max-width: 500px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: var(--gray-color);
+}

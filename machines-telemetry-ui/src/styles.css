@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: sans-serif;
+}
+
+:root {
+  --primary-color: rgb(0, 0, 88);
+  --secundary-color: rgb(0, 124, 10);
+  --gray-color: #555555;
+}
+
+body{
+    background-color: #f5f5fa;
+}

@@ -1,0 +1,17 @@
+button{
+    background-color: var(--secundary-color);
+    padding: 10px 20px;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 12pt;
+    width: 100%;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+button:disabled{
+    background-color: var(--gray-color);
+}
