@@ -12,6 +12,8 @@ namespace MachinesTelemetry.Api.Validations.MachineValidations
                 .NotEmpty().WithMessage("Nome é requerido")
                 .MaximumLength(100).WithMessage("Nome deve ter no máximo 100 caracteres")
                 .MinimumLength(4).WithMessage("Nome deve ter no minimo 4 caracteres");
+
+            RuleFor(m => m.Telemetry).SetValidator(new TelemetryRequestValidator());
         }
 
     }

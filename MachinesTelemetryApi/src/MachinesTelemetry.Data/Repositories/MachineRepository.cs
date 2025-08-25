@@ -12,7 +12,7 @@ namespace MachinesTelemetry.Data.Repositories
 
         public async Task<IEnumerable<Machine>> GetAllWithTelemetriesAsync()
         {
-            return await _dbSet.Include(m => m.Telemetries).ToListAsync();
+            return await _dbSet.Include(m => m.Telemetries.OrderByDescending(p => p.CreatedAt).Take(1)).OrderBy(p => p.Name).ToListAsync();
         }
 
         public async Task<Machine?> GetByIdWithTelemetriesAsync(Guid id)

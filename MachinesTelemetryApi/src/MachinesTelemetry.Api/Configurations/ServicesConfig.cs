@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-using FluentValidation.AspNetCore;
-using MachinesTelemetry.Api.Validations.MachineValidations;
+﻿using FluentValidation.AspNetCore;
 using MachinesTelemetry.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,6 +8,7 @@ namespace MachinesTelemetry.Api.Configurations
     {
         public static IServiceCollection ConfigureServices(this IServiceCollection services, WebApplicationBuilder builder)
         {
+            services.ConfigureCors();
             services.ConfigureDependencyInjection();
             services.AddAutoMapper(c =>
             {

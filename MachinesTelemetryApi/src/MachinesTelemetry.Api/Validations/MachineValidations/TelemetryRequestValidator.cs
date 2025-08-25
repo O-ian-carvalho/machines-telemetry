@@ -12,17 +12,17 @@ namespace MachinesTelemetry.Api.Validations.MachineValidations
               .InclusiveBetween(-90, 90)
               .WithMessage("Latitude deve estar entre -90 e 90.");
 
-            // Longitude deve estar entre -180 e 180
+            
             RuleFor(t => t.Longitude)
                 .InclusiveBetween(-180, 180)
                 .WithMessage("Longitude deve estar entre -180 e 180.");
 
-            // Status é obrigatório
+            
             RuleFor(t => t.Status)
                 .NotEmpty()
                 .WithMessage("Status é obrigatório.")
                 .Must(BeAValidStatus)
-                .WithMessage("Status inválido. Valores válidos: Operating, Maintenance, Offline.");
+                .WithMessage("Status inválido. Valores válidos: Operating, Maintenance, Stopped.");
         }
 
         private bool BeAValidStatus(string status)
