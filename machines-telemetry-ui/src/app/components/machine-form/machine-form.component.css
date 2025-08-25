@@ -5,11 +5,18 @@ form{
     min-width: 30vw;
     height: auto;
     gap: 20px;
-    align-items: center;
     padding: 30px;
     border-radius: 20px;
     background-color: #fff;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.315);
+    margin-top: 20px;
+}
+#telemetry{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+   
 }
 
 form label{
@@ -17,6 +24,7 @@ form label{
     flex-direction: column;
     gap: 5px;
     width: 100%;
+    font-size: 11pt;
 }
 
 form label input{
@@ -45,4 +53,15 @@ form label select:focus {
 
 .select-wrapper select {
   padding-right: 40px; /* espaço para a seta */
+}
+
+.error{
+    width: 100%;
+    text-align: left;
+}
+.error p {
+    color: red;
+    text-align: left;
+    font-size: 10pt;
+    margin-top: -10px;
 }

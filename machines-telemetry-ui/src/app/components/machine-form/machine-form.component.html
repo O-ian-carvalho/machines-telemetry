@@ -1,31 +1,50 @@
-<form (ngSubmit)="submit()">
-    <label>
-        Nome:
-        <input placeholder="Digite o nome da máquina" type="text" [(ngModel)]="machine.name" name="name" required>
-    </label>
+<form [formGroup]="machineForm" (ngSubmit)="submit()">
+  <label>
+    Nome:
+    <input type="text" formControlName="name" placeholder="Digite o nome da máquina" />
+  </label>
+  <div *ngIf="name?.touched && name?.invalid" class="error">
+    <p *ngIf="name?.errors?.['required']">Nome é obrigatório.</p>
+    <p *ngIf="name?.errors?.['minlength']">Nome deve ter no mínimo 4 caracteres.</p>
+    <p *ngIf="name?.errors?.['maxlength']">Nome deve ter no máximo 100 caracteres.</p>
+  </div>
 
+  <div formGroupName="telemetry" id="telemetry">
     <label>
         Latitude:
-        <input  type="number" [(ngModel)]="machine.telemetry.latitude" name="latitude" required>
+        <input placeholder="15.7326726" type="number" formControlName="latitude"/>
     </label>
+    <div *ngIf="latitude?.touched && latitude?.invalid" class="error">
+        <p *ngIf="latitude?.errors?.['required']">Latitude é obrigatória.</p>
+        <p *ngIf="latitude?.errors?.['min']">Latitude deve ser no mínimo -90.</p>
+        <p *ngIf="latitude?.errors?.['max']">Latitude deve ser no máximo 90.</p>
+    </div>
 
     <label>
         Longitude:
-        <input type="number" [(ngModel)]="machine.telemetry.longitude" name="longitude" required>
+        <input placeholder="12.7326726" type="number" formControlName="longitude"/>
     </label>
+    <div *ngIf="longitude?.touched && longitude?.invalid" class="error">
+        <p *ngIf="longitude?.errors?.['required']">Longitude é obrigatória.</p>
+        <p *ngIf="longitude?.errors?.['min']">Longitude deve ser no mínimo -180.</p>
+        <p *ngIf="longitude?.errors?.['max']">Longitude deve ser no máximo 180.</p>
+    </div>
 
     <label>
         Status:
         <div class="select-wrapper">
-            <select [(ngModel)]="machine.telemetry.status" name="status" required>
-                <option value="" disabled selected>Selecione um status</option>
+            <select formControlName="status">
+                <option value="" disabled>Selecione um status</option>
                 <option value="Operating">Operando</option>
                 <option value="Stopped">Parada</option>
                 <option value="Maintenance">Manutenção</option>
             </select>
         </div>
     </label>
+    <div *ngIf="status?.touched && status?.invalid" class="error">
+        <p>Status é obrigatório.</p>    
+    </div>
+</div>
 
-  <app-submit-button text="Criar Máquina" [disabled]="false"/>
+  <app-submit-button text="Criar Máquina" [disabled]="machineForm.invalid"></app-submit-button>
 </form>
-
