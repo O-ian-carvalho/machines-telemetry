@@ -19,17 +19,18 @@ namespace MachinesTelemetry.Api.Helpers
 
             var machines = new List<Machine>
             {
-                new Machine { Name = "Escavadeira Hidráulica" },
+                new Machine { Name = "Escavadeira" },
                 new Machine { Name = "Trator de Esteira" },
-                new Machine { Name = "Guindaste Móvel" },
-                new Machine { Name = "Carregadeira de Rodas" },
+                new Machine { Name = "Guindaste" },
+                new Machine { Name = "Carregadeira" },
                 new Machine { Name = "Motoniveladora" },
-                new Machine { Name = "Empilhadeira" },
-                new Machine { Name = "Betoneira" },
-                new Machine { Name = "Caminhão Caçamba" },
-                new Machine { Name = "Mini Escavadeira" },
-                new Machine { Name = "Retroescavadeira" }
+                new Machine { Name = "Escavadeira de Mineração" },
+                new Machine { Name = "Pá Carregadeira" },
+                new Machine { Name = "Caminhão Fora-de-Estrada" },
+                new Machine { Name = "Escavadeira de Arrasto" },
+                new Machine { Name = "Grua" }
             };
+
 
             var coordinates = new (double lat, double lng)[]
             {
