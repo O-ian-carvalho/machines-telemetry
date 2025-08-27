@@ -3,6 +3,7 @@ import { MachineService } from '../../services/machine.service';
 import { ActivatedRoute } from '@angular/router';
 import { Machine } from '../../interfaces/machine-interfaces';
 import { MapComponent } from "../map/map.component";
+import { Helpers } from '../../helpers/helpers';
 
 @Component({
   selector: 'app-machine-info',
@@ -12,6 +13,7 @@ import { MapComponent } from "../map/map.component";
   styleUrl: './machine-info.component.css'
 })
 export class MachineInfoComponent {
+    Helpers = Helpers
     machine: Machine | null = null;
   
     constructor(

@@ -6,7 +6,14 @@
         <th>Status</th>
         <th>Latitude</th>
         <th>Longitude</th>
-        <th></th>
+        <th>
+          <select id="selectStatus" (change)="onSelectChange($event)">
+            <option value="" selected>Todos</option>
+            <option value="Stopped">Parado</option>
+            <option value="Operating">Em funcionamento</option>
+            <option value="Maintenance">Em manutenção</option>
+          </select>
+        </th>
       </tr>
     </thead>
     <tbody>

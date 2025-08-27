@@ -56,3 +56,12 @@ td #status{
 tbody tr:nth-child(even) {
   background-color: #fafafa;
 }
+
+#selectStatus{
+  padding: 5px 10px;
+  width: 170px;
+  border-radius: 10px;
+  border: 5px solid #ffffff;
+  box-shadow: 0 0px 5px rgba(0, 0, 0, 0.349);
+
+}

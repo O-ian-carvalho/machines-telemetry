@@ -10,7 +10,7 @@
             </div>     
             <div>
                 <h6 class="title">Status</h6>
-                <h6 class="resp">{{machine?.lastTelemetry?.status}}</h6>
+                <h6 class="resp">{{Helpers.mapStatus(machine?.lastTelemetry?.status!)}}</h6>
             </div>     
         </div>
         <div class="camadas">

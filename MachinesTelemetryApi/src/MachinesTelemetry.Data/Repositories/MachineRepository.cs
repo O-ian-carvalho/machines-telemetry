@@ -25,7 +25,11 @@ namespace MachinesTelemetry.Data.Repositories
         {
             return await _dbSet
                  .Include(m => m.Telemetries.OrderByDescending(p => p.CreatedAt).Take(1))
-                 .Where(m => m.Telemetries.First().Status == status)
+                  .Where(m => m.Telemetries
+                    .OrderByDescending(t => t.CreatedAt)
+                    .FirstOrDefault() != null &&
+                    m.Telemetries.OrderByDescending(t => t.CreatedAt)
+                    .First().Status == status)
                  .ToListAsync();              
         }
 

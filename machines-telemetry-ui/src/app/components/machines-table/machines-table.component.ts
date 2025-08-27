@@ -27,11 +27,16 @@ export class MachinesTableComponent {
   }
 
   // TODO: Implementar paginação
-  getMachines():void{
-     this.machineService.getMachines().subscribe({
+  getMachines(status? : string):void{
+     this.machineService.getMachines(status).subscribe({
       next: (data) => this.machines = data,
       error: (err) => console.error(err)
     });
+  }
+
+  onSelectChange(event: Event) {
+    const value = (event.target as HTMLSelectElement).value;
+    this.getMachines(value)
   }
 
     
