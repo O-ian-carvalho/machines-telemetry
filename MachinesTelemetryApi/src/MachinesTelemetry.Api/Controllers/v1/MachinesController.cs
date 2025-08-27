@@ -13,6 +13,8 @@ namespace MachinesTelemetry.Api.Controllers.v1
     {
 
 
+        // TODO: Implementar paginação
+
         [HttpGet]
         public async Task<ActionResult<List<MachineResponseDto>>> GetMachines([FromQuery] string? status)
         {
@@ -38,7 +40,7 @@ namespace MachinesTelemetry.Api.Controllers.v1
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<MachineResponseDto>> GetMachineById(Guid id)
         {
-            var machine = await machineService.GetByIdAsync(id);
+            var machine = await machineService.GetByIdWithTelemetriesAsync(id);
 
             if(machine == null)
                 return NotFound(BuildErrorResponse(StatusCodes.Status404NotFound, "MachineNotFound", "Id da máquina não foi encontrado")); 

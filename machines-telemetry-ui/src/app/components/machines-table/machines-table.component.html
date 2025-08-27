@@ -14,7 +14,7 @@
           <td><p>{{ machine.name }}</p></td>
           <td>
             <p id="status" [ngStyle]="{ 'background-color': getStatusColor(machine.lastTelemetry.status) }">
-              {{ mapStatus(machine.lastTelemetry.status) }}
+              {{ Helpers.mapStatus(machine.lastTelemetry.status) }}
             </p>
           </td>
           <td><p>{{ machine.lastTelemetry.latitude }}</p></td>

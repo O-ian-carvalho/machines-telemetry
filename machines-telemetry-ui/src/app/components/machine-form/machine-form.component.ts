@@ -44,7 +44,28 @@ export class MachineFormComponent {
         this.toastr.success('Máquina criada com sucesso!', 'Sucesso');
         this.router.navigate(['/']);
       },
-      error: (err) => this.toastr.error('falha ao criar máquina!', 'Erro')
+      error: (err) => {
+        const errorResponse = err.error;
+
+        if (errorResponse?.title === 'MachineNameDuplicated') {
+          this.toastr.error('Esse nome de máquina já etá em uso.', 'Erro');
+          return;
+        }
+
+        if (errorResponse?.errors) {
+          const errors = errorResponse.errors;
+
+          for (const key in errors) {
+            if (errors.hasOwnProperty(key)) {
+              errors[key].forEach((message: string) => {
+                this.toastr.error(message, 'Erro');
+              });
+            }
+          }
+        } else {
+          this.toastr.error('Ocorreu um erro ao processar a requisição.', 'Erro');
+        }
+      }
     });
   }
 

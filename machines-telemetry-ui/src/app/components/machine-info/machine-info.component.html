@@ -1,0 +1,28 @@
+    <div id="machineInfo">
+        <div></div>
+        <div id="top">
+            <h2>Informações da máquina</h2>
+        </div>
+        <div class="camadas">
+            <div>
+                <h6 class="title">Nome</h6>
+                <h6 class="resp">{{machine?.name}}</h6>
+            </div>     
+            <div>
+                <h6 class="title">Status</h6>
+                <h6 class="resp">{{machine?.lastTelemetry?.status}}</h6>
+            </div>     
+        </div>
+        <div class="camadas">
+            <div>
+                <h6 class="title">Latitude</h6>
+                <h6 class="resp">{{machine?.lastTelemetry?.latitude}}</h6>
+            </div>       
+            <div>
+                <h6 class="title">Longitude</h6>
+                <h6 class="resp">{{machine?.lastTelemetry?.longitude}}</h6>
+            </div>   
+        </div>
+        
+        <app-map [latitude]="machine!.lastTelemetry!.latitude!"  [longitude]="machine!.lastTelemetry!.longitude!"></app-map>
+    </div>

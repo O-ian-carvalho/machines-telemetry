@@ -1,5 +1,6 @@
 export interface Telemetry {
   id: string;
+  createdAt: Date,
   latitude: number;
   longitude: number;
   status: string;

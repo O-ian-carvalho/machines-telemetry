@@ -11,6 +11,15 @@ form{
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.315);
     margin-top: 20px;
 }
+
+@media(max-width: 600px)
+{
+    form{
+        width: 80%;
+    }
+
+}
+
 #telemetry{
     display: flex;
     flex-direction: column;

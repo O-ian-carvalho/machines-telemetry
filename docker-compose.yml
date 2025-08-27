@@ -1,0 +1,57 @@
+version: '3.9'
+
+networks:
+  machinesnet:
+    driver: bridge
+
+volumes:
+  local_pgdata:
+  pgadmin_data:
+  dataprotection_keys:
+
+services:
+  api:
+    container_name: machines-telemetry-api
+    build:
+      context: ./MachinesTelemetryApi
+      dockerfile: Dockerfile
+    ports:
+      - "5058:8080"
+    depends_on:
+      postgresdb:
+        condition: service_healthy
+    networks:
+      - machinesnet
+    volumes:
+      - dataprotection_keys:/root/.aspnet/DataProtection-Keys
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Docker
+
+  postgresdb:
+    image: postgres:16
+    container_name: postgresdb
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: MachinesTelemetry
+    networks:
+      - machinesnet
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d MachinesTelemetry"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  angular:
+    build:
+      context: ./machines-telemetry-ui
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
+    command: ng serve --host 0.0.0.0 --port 4200 --disable-host-check
+

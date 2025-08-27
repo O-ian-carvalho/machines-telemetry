@@ -1,0 +1,20 @@
+ <div id="history">
+    <div id="top">
+            <h2>Histórico de telemetrias</h2>
+    </div>
+    <div class="body">
+        <div class="item" id="top">
+            <h6 class="date">Data</h6>
+            <h6 class="status"> Status </h6>
+            <h6>Longitude</h6>
+            <h6>Latitude</h6>
+        </div>
+        <div class="item" *ngFor="let telemetry of telemetries">
+            <h6 class="date">{{telemetry.createdAt | date:'dd/MM/yyyy HH:mm:ss' }}</h6>
+            <h6 class="status"> {{Helpers.mapStatus(telemetry.status)}} </h6>
+            <h6>{{telemetry.latitude}}</h6>
+            <h6>{{telemetry.longitude}}</h6>
+        </div>
+            
+    </div>    
+</div>

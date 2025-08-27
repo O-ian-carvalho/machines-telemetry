@@ -3,6 +3,8 @@ import { LinkButtonComponent } from "../link-button/link-button.component";
 import { Machine } from '../../interfaces/machine-interfaces';
 import { MachineService } from '../../services/machine.service';
 import { NgFor, NgStyle } from '@angular/common';
+import { Helpers } from '../../helpers/helpers';
+
 
 @Component({
   selector: 'app-machines-table',
@@ -12,9 +14,10 @@ import { NgFor, NgStyle } from '@angular/common';
   styleUrl: './machines-table.component.css'
 })
 export class MachinesTableComponent {
-
-   machines: Machine[] = [];
-   statusBgColor = 'white';
+  
+  Helpers = Helpers;
+  machines: Machine[] = [];
+  statusBgColor = 'white';
 
   constructor(private machineService: MachineService) {}
 
@@ -23,6 +26,7 @@ export class MachinesTableComponent {
       this.getMachines()
   }
 
+  // TODO: Implementar paginação
   getMachines():void{
      this.machineService.getMachines().subscribe({
       next: (data) => this.machines = data,
@@ -44,18 +48,6 @@ export class MachinesTableComponent {
     }
   }
 
-  mapStatus(status: string): string {
-    switch (status) {
-      case 'Maintenance':
-        return 'Em manutenção';
-      case 'Operating':
-        return 'Em funcionamento';
-      case 'Stopped':
-        return 'Parado';
-      default:
-        return 'Indefinido';
-    }
-  }
   
 }
 
