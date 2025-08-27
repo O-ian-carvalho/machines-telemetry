@@ -57,9 +57,6 @@ TestResults/
 *.trx
 *.coverage
 
-# Ignore configuration and secrets files
-MachinesTelemetryApi/src/MachinesTelemetry.Api/appsettings.Development.json
-MachinesTelemetryApi/src/MachinesTelemetry.Api/appsettings.json
 
 # Ignore application insights folder
 ApplicationInsights.config
