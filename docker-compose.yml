@@ -24,9 +24,7 @@ services:
       - dataprotection_keys:/root/.aspnet/DataProtection-Keys
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
-
-      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT}
-      - ASPNETCORE_URLS=${ASPNETCORE_URLS}
+      - ASPNETCORE_URLS=http://0.0.0.0:8080
 
       - S3__AccessKey=${S3__AccessKey}
       - S3__SecretKey=${S3__SecretKey}
