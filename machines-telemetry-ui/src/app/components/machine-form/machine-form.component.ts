@@ -16,6 +16,8 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 export class MachineFormComponent {
 
   machineForm: FormGroup;
+  preview: string | ArrayBuffer | null = null;
+
 
   constructor(
     private fb: FormBuilder,
@@ -26,6 +28,7 @@ export class MachineFormComponent {
 
     this.machineForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(100)]],
+      image: [null, Validators.required],
       telemetry: this.fb.group({
         latitude: [null, [Validators.required, Validators.min(-90), Validators.max(90)]] ,
         longitude: [null, [Validators.required, Validators.min(-180), Validators.max(180)]],
@@ -35,20 +38,40 @@ export class MachineFormComponent {
 
   }
 
-  submit() {
+ submit() {
     if (this.machineForm.invalid) return;
 
     const payload = this.machineForm.value;
+    const file: File = this.machineForm.value.image; // <-- A imagem
+
     this.machineService.createMachine(payload).subscribe({
       next: (res) => {
-        this.toastr.success('Máquina criada com sucesso!', 'Sucesso');
-        this.router.navigate(['/']);
+
+        // Se não houver imagem, só finaliza
+        if (!file) {
+          this.toastr.success('Máquina criada com sucesso!', 'Sucesso');
+          this.router.navigate(['/']);
+          return;
+        }
+
+        // Upload da imagem
+        this.machineService.uploadImage(res.id, file).subscribe({
+          next: () => {
+            this.toastr.success('Máquina criada com sucesso!', 'Sucesso');
+            this.router.navigate(['/']);
+          },
+          error: (err) => {
+            console.error("Erro ao enviar imagem:", err);
+            this.toastr.error('Máquina criada, mas houve erro ao enviar a imagem.', 'Erro');
+          }
+        });
       },
+
       error: (err) => {
         const errorResponse = err.error;
 
         if (errorResponse?.title === 'MachineNameDuplicated') {
-          this.toastr.error('Esse nome de máquina já etá em uso.', 'Erro');
+          this.toastr.error('Esse nome de máquina já está em uso.', 'Erro');
           return;
         }
 
@@ -69,8 +92,25 @@ export class MachineFormComponent {
     });
   }
 
+
+
+  onImageSelected(event: any) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    this.machineForm.patchValue({ image: file });
+    this.machineForm.get('image')?.updateValueAndValidity();
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.preview = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
   // Helper para mensagens
   get name() { return this.machineForm.get('name') as FormControl; }
+  get image() { return this.machineForm.get('image') as FormControl; }
   get latitude() { return this.machineForm.get('telemetry.latitude') as FormControl; }
   get longitude() { return this.machineForm.get('telemetry.longitude') as FormControl; }
   get status() { return this.machineForm.get('telemetry.status') as FormControl; }

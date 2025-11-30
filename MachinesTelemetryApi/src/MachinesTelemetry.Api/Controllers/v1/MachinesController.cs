@@ -117,7 +117,17 @@ namespace MachinesTelemetry.Api.Controllers.v1
             return Ok(mapper.Map<List<TelemetryResponseDto>>(telemetries));
         }
 
+        [HttpPost("{id:guid}/upload-image")]
+        public async Task<ActionResult<MachineResponseDto>> UploadImage(Guid id, IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+            {
+                return BadRequest(BuildErrorResponse(StatusCodes.Status400BadRequest, "InvalidFile", "Arquivo inválido."));
+            }
 
+            var machine = await machineService.UploadImageAsync(id, file);
 
+            return Ok(mapper.Map<MachineResponseDto>(machine));
+        }
     }
 }

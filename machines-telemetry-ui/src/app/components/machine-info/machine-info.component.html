@@ -22,7 +22,16 @@
                 <h6 class="title">Longitude</h6>
                 <h6 class="resp">{{machine?.lastTelemetry?.longitude}}</h6>
             </div>   
+           
         </div>
+
+         
+
+        <div class="machine-image" *ngIf="machine?.imageUrl">
+            <img [src]="machine!.imageUrl" alt="Imagem da máquina" />
+        </div>
+
+
         
         <app-map [latitude]="machine!.lastTelemetry!.latitude!"  [longitude]="machine!.lastTelemetry!.longitude!"></app-map>
     </div>

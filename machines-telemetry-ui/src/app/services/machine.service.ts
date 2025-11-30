@@ -36,4 +36,12 @@ export class MachineService {
   createMachine(machine: MachinePost): Observable<Machine> {
     return this.http.post<Machine>(this.controllerUrl, machine);
   }
+
+  uploadImage(machineId: string, file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    return this.http.post(`${this.controllerUrl}/${machineId}/upload-image`, formData);
+  }
+
 }

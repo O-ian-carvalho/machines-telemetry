@@ -59,3 +59,12 @@ h2{
 #map{
     margin-top: 10px;
 }
+
+.machine-image img{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    margin-top: -190px;
+    margin-left: 74vw;
+    border-radius: 20px;
+}

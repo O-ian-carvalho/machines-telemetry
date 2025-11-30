@@ -5,10 +5,13 @@ using MachinesTelemetry.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddEnvironmentVariables();
 
 builder.Services.ConfigureServices(builder);
 
 var app = builder.Build();
+
+
 
 app.UseSwagger();
 app.UseSwaggerUI();

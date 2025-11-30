@@ -9,6 +9,18 @@
     <p *ngIf="name?.errors?.['maxlength']">Nome deve ter no máximo 100 caracteres.</p>
   </div>
 
+  <label>
+    Imagem da Máquina:
+    <input type="file" accept="image/*" (change)="onImageSelected($event)" />
+  </label>
+  <div *ngIf="image?.touched && image?.invalid" class="error">
+    <p *ngIf="image?.errors?.['required']">A imagem é obrigatória.</p>
+  </div>
+
+  <div *ngIf="preview">
+    <img [src]="preview" alt="Preview" width="150" style="margin-top: 10px;">
+  </div>
+
   <div formGroupName="telemetry" id="telemetry">
     <label>
         Latitude:

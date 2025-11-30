@@ -4,11 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import { Machine } from '../../interfaces/machine-interfaces';
 import { MapComponent } from "../map/map.component";
 import { Helpers } from '../../helpers/helpers';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-machine-info',
   standalone: true,
-  imports: [MapComponent],
+  imports: [MapComponent,CommonModule],
   templateUrl: './machine-info.component.html',
   styleUrl: './machine-info.component.css'
 })
@@ -23,6 +25,7 @@ export class MachineInfoComponent {
   
     ngOnInit(): void {
       this.getMachine();
+      console.log(this.machine);
     }
   
   

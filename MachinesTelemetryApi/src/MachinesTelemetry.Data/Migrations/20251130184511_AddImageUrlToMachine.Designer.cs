@@ -3,6 +3,7 @@ using System;
 using MachinesTelemetry.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace MachinesTelemetry.Data.Migrations
 {
     [DbContext(typeof(MachinesTelemetryDbContext))]
-    partial class MachinesTelemetryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251130184511_AddImageUrlToMachine")]
+    partial class AddImageUrlToMachine
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
