@@ -64,6 +64,7 @@ h2{
     height: 200px;
     position: absolute;
     margin-top: -190px;
-    margin-left: 74vw;
+    right: 0;
+    margin-right: 6.5vw;
     border-radius: 20px;
 }
