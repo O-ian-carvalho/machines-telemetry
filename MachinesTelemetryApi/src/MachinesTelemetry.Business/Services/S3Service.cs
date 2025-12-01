@@ -16,8 +16,8 @@ namespace MachinesTelemetry.Business.Services
 
         public async Task<string> UploadFileAsync(IFormFile file)
         {
-            var bucketName = Environment.GetEnvironmentVariable("S3_BUCKET_NAME");
-            var region = Environment.GetEnvironmentVariable("S3_REGION");
+            var bucketName = Environment.GetEnvironmentVariable("S3__BucketName");
+            var region = Environment.GetEnvironmentVariable("S3__Region");
 
             var key = $"{Guid.NewGuid()}-{file.FileName}";
 
@@ -33,5 +33,6 @@ namespace MachinesTelemetry.Business.Services
 
             return $"https://{bucketName}.s3.{region}.amazonaws.com/{key}";
         }
+
     }
 }

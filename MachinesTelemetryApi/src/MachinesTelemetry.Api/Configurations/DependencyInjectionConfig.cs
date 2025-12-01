@@ -26,9 +26,9 @@ namespace MachinesTelemetry.Api.Configurations
 
             services.AddSingleton<IAmazonS3>(sp =>
             {
-                var accessKey = Environment.GetEnvironmentVariable("S3_ACCESS_KEY");
-                var secretKey = Environment.GetEnvironmentVariable("S3_SECRET_KEY");
-                var region = Environment.GetEnvironmentVariable("S3_REGION");
+                var accessKey = Environment.GetEnvironmentVariable("S3__AccessKey");
+                var secretKey = Environment.GetEnvironmentVariable("S3__SecretKey");
+                var region = Environment.GetEnvironmentVariable("S3__Region");
 
                 return new AmazonS3Client(
                     accessKey,
@@ -36,6 +36,7 @@ namespace MachinesTelemetry.Api.Configurations
                     Amazon.RegionEndpoint.GetBySystemName(region)
                 );
             });
+
 
 
 
